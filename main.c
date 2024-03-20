@@ -5,7 +5,7 @@
 
 const int INIT_PROCESS_PID = 1;
 const int INIT_PRIORITY = 0; // or whatever priority level you decide for "init"
-
+extern int get_next_pid(void);
 extern int nextPid;
 
 int main()
@@ -32,8 +32,9 @@ int main()
         printf("Failed to create init process.\n");
         return -1;
     }
+    nextPid = INIT_PROCESS_PID + 1;
 
-    printf("Enter command (C - Create, F - Fork, K - Kill, Q - Quit): ");
+     printf("Enter command (C - Create, F - Fork, K - Kill, E - Exit, Q - Quit): ");
 
     while (scanf(" %c", &command) == 1)
     { // Note the space before %c to skip any leading whitespace
@@ -73,10 +74,16 @@ int main()
         case 'q':
             printf("Exiting program.\n");
             return 0;
+
+        case 'E':
+        case 'e':
+            Commands_Exit();
+            break;
         default:
             printf("Invalid command.\n");
         }
-        printf("Enter command (C - Create, F - Fork, K - Kill, Q - Quit): ");
+        // In main.c, within the main loop where you prompt for user commands
+        printf("Enter command (C - Create, F - Fork, K - Kill, E - Exit, Q - Quit): ");
     }
 
     return 0;

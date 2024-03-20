@@ -12,5 +12,5 @@ int Commands_Fork();
 
 
 int Commands_Kill(int pid);
-
+int Commands_Exit();
 #endif // COMMANDS_H

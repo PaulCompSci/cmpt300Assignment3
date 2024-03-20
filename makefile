@@ -3,13 +3,13 @@ CFLAGS = -Wall -g
 OBJECTS = main.o list.o pcb.o scheduler.o commands.o semaphore.o utils.o
 HEADERS = list.h pcb.h scheduler.h commands.h semaphore.h utils.h
 
-all: my_program
+all: run
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-my_program: $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o my_program
+run: $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o run
 
 clean:
-	del *.o my_program.exe
+	del *.o run.exe
